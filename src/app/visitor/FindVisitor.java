@@ -26,16 +26,19 @@ public class FindVisitor implements MachineVisitor {
 
     private MachineComponent found;
 
+    public FindVisitor(int soughtId) {
+        this.soughtId = soughtId;
+    }
+
     /**
      * @param mc the composite to look within
      * @param id the id of the machine to find
      * @return a machine with the given id, within the given machine composite
      */
-    public MachineComponent find(MachineComponent mc, int id) {
-        found = null;
-        soughtId = id;
-        mc.accept(this);
-        return found;
+    public static MachineComponent find(MachineComponent mc, int id) {
+        FindVisitor visitor = new FindVisitor(id);
+        mc.accept(visitor);
+        return visitor.found;
     }
 
     /**
