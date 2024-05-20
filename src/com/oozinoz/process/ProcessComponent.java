@@ -11,11 +11,10 @@ package com.oozinoz.process;
  * restriction that you may not claim that you wrote it.
  */
 
+import com.oozinoz.iterator.AcycliclyIterable;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import com.oozinoz.iterator.AcycliclyIterable;
-import com.oozinoz.iterator.ComponentIterator;
 
 /**
  * Objects of this class represent either individual process steps or
@@ -50,17 +49,11 @@ public abstract class ProcessComponent implements AcycliclyIterable<ProcessCompo
         return name;
     }
 
-    public ComponentIterator<ProcessComponent> iterator() {
-        return iterator(new HashSet<ProcessComponent>());
-    }
-    
-    public abstract ComponentIterator<ProcessComponent> iterator(Set<ProcessComponent> visited);
-    
     /**
      * @return the number of leaf node steps in this composite.
      */
     public int getStepCount() {
-        return getStepCount(new HashSet<String>());
+        return getStepCount(new HashSet<>());
     }
 
     /**
