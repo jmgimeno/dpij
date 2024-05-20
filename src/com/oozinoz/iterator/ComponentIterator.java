@@ -48,7 +48,4 @@ public abstract class ComponentIterator<E> implements Iterator<E> {
      */
     public abstract int getDepth();
 
-    public void remove() {
-        throw new UnsupportedOperationException("ComponentIterator.Remove");
-    }
 }
